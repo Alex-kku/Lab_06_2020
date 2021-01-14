@@ -12,7 +12,8 @@ void HashGenerator::InitLogs() const {
     boost::log::add_common_attributes();
     auto TraceLogFile = boost::log::add_file_log(
             boost::log::keywords::file_name =
-                    "/home/baha/Alex-kku/workspace/projects/C++/lab-06-multithreads/Logs/LogTrace_%N.log",
+                    "/home/baha/Alex-kku/workspace/projects/C++/"
+                    "lab-06-multithreads/Logs/LogTrace_%N.log",
             boost::log::keywords::rotation_size = 10 * 1024 * 1024,
             boost::log::keywords::format =
                     "[%TimeStamp%][%Severity%][%ThreadID%]: [%Message%]");
@@ -20,7 +21,8 @@ void HashGenerator::InitLogs() const {
                              boost::log::trivial::trace);
     auto InfoLogFile = boost::log::add_file_log(
             boost::log::keywords::file_name =
-                    "/home/baha/Alex-kku/workspace/projects/C++/lab-06-multithreads/Logs/LogInfo_%N.log",
+                    "/home/baha/Alex-kku/workspace/projects/C++/"
+                    "lab-06-multithreads/Logs/LogInfo_%N.log",
             boost::log::keywords::rotation_size = 10 * 1024 * 1024,
             boost::log::keywords::format =
                     "[%TimeStamp%][%Severity%][%ThreadID%]: [%Message%]");
@@ -33,7 +35,8 @@ void HashGenerator::InitLogs() const {
                            boost::log::trivial::trace);
 }
 
-void HashGenerator::SaveHash(const std::string &data, const std::string &hash, const std::time_t &timestamp) {
+void HashGenerator::SaveHash(const std::string &data, const std::string &hash,
+                             const std::time_t &timestamp) {
     std::stringstream ss;
     ss << std::uppercase << std::hex << std::stoi(data);
     nlohmann::json js;
@@ -74,13 +77,15 @@ void HashGenerator::FindHash(int &argc, char *argv[]) {
             break;
         case 2:
             threadsNumber = std::atoi(argv[1]);
-            if (threadsNumber < 1 || threadsNumber > std::thread::hardware_concurrency()) {
+            if (threadsNumber < 1 || threadsNumber >
+                    std::thread::hardware_concurrency()) {
                 throw std::out_of_range("Uncorect number threads!");
             }
             break;
         case 3:
             threadsNumber = std::atoi(argv[1]);
-            if (threadsNumber < 1 || threadsNumber > std::thread::hardware_concurrency()) {
+            if (threadsNumber < 1 || threadsNumber >
+                    std::thread::hardware_concurrency()) {
                 throw std::out_of_range("Uncorect number threads!");
             }
             path = argv[2];

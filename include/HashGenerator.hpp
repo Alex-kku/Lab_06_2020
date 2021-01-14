@@ -31,7 +31,8 @@ private:
 
     void CalculationHash();
 
-    void SaveHash(const std::string &data, const std::string &hash, const std::time_t &timestamp);
+    void SaveHash(const std::string &data, const std::string &hash,
+                  const std::time_t &timestamp);
 
     nlohmann::json json;
 };
